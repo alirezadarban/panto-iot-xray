@@ -47,7 +47,6 @@ export class RabbitmqService implements OnModuleInit, OnModuleDestroy {
           const content = msg.content.toString();
           const payload = JSON.parse(content);
 
-          // فرض بر این که payload همان ساختار نمونه داده را دارد
           for (const deviceId of Object.keys(payload)) {
             const deviceData = payload[deviceId];
             const time = new Date(deviceData.time);

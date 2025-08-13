@@ -5,6 +5,6 @@ import { SignalsModule } from '../signals/signals.module';
 @Module({
   providers: [RabbitmqService],
   exports: [RabbitmqService],
-  imports: [SignalsModule]
+  imports: [SignalsModule],
 })
 export class RabbitmqModule {}

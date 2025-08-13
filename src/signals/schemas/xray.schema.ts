@@ -12,13 +12,13 @@ export class Xray {
   time: Date; // timestamp اصلی
 
   @Prop({ required: true })
-  dataLength: number; // تعداد نقاط داخل data
+  dataLength: number;
 
   @Prop({ required: true })
-  dataVolume: number; // حجم داده (بایت)
+  dataVolume: number;
 
   @Prop({ type: Object })
-  rawData?: Record<string, any>; // ذخیره کامل یا خلاصه داده خام (اختیاری)
+  rawData?: Record<string, any>;
 }
 
 export const XraySchema = SchemaFactory.createForClass(Xray);

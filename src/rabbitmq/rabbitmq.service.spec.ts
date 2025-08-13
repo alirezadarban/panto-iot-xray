@@ -7,7 +7,6 @@ describe('RabbitmqService', () => {
 
   const mockSignalsService = {
     saveSignal: jest.fn(),
-    // هر متد دیگه که توی RabbitmqService استفاده میشه رو اینجا mock کن
   };
 
   beforeEach(async () => {
