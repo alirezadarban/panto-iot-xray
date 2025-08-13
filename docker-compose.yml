@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: signals_service
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/signals
+      - NODE_ENV=production
+      - RABBITMQ_URI=amqp://admin:admin@rabbitmq:5672
+    depends_on:
+      - mongo
+      - rabbitmq
+
+  mongo:
+    image: mongo:6
+    container_name: signals_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: signals_rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  mongo_data:
+  rabbitmq_data:
